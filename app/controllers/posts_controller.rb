@@ -1,12 +1,8 @@
 class PostsController < ApplicationController
 
-  def index  # indexアクションを定義した
+  def index  # indexアクションを定義
     @posts = Post.all.order(id: "DESC")
   end
-
-  # 削除
-  # def new
-  # end
 
   def create
     Post.create(content: params[:content])
@@ -14,6 +10,7 @@ class PostsController < ApplicationController
   end
 
   def checked
+    # binding.pry
     post = Post.find(params[:id])
     if post.checked
       post.update(checked: false)
